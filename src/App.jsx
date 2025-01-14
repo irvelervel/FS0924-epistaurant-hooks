@@ -7,13 +7,16 @@ import HomeContent from './components/HomeContent'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ReservationForm from './components/ReservationForm'
 import AdminSection from './components/AdminSection'
+import { useState } from 'react'
 
 function App() {
+  const [updateReservations, setUpdateReservations] = useState(0)
+
   return (
     <>
       <RestaurantNavbar />
-      <AdminSection />
-      <ReservationForm />
+      <AdminSection updateReservations={updateReservations} />
+      <ReservationForm setUpdateReservations={setUpdateReservations} />
       <HomeContent />
     </>
   )

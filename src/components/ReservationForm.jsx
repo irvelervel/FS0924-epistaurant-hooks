@@ -41,7 +41,7 @@ const initialState = {
   specialRequests: '',
 }
 
-const ReservationForm = function () {
+const ReservationForm = function (props) {
   // state = {
   //   reservation: {
   //     ...initialState,
@@ -76,6 +76,10 @@ const ReservationForm = function () {
 
           setReservation({
             ...initialState,
+          })
+          // incrementa di 1 il valore di updateReservations nello stato di App
+          props.setUpdateReservations((currentUpdateReservations) => {
+            return currentUpdateReservations + 1
           })
         } else {
           // 500, 400, etc -> la chiamata NON è andata a buon fine

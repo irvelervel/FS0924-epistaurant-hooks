@@ -9,7 +9,7 @@ import { Container, Row, Col, ListGroup, Spinner, Alert } from 'react-bootstrap'
 
 const URL = 'https://striveschool-api.herokuapp.com/api/reservation'
 
-const AdminSection = function () {
+const AdminSection = function (props) {
   // state = {
   //   reservations: [], // inizializzo reservations come array vuoto in quanto intendo preservare il TIPO del dato; questa proprietà sarà SEMPRE un array, nel caso peggiore rimarrà vuoto oppure si riempirà di n elementi
   //   isLoading: true,
@@ -83,13 +83,13 @@ const AdminSection = function () {
     // IMMEDIATAMENTE DOPO LA PRIMA INVOCAZIONE DI RENDER()
     // 1) render()
     // 2) componentDidMount()
-    console.log('SONO COMPONENTDIDMOUNT')
+    // console.log('SONO COMPONENTDIDMOUNT')
     // dopo questa invocazione immediatamente dopo render(),
     // componentDidMount() NON VERRÀ MAI PIÙ ESEGUITO.
     // componentDidMount() di conseguenza è il posto PERFETTO
     // per eseguire delle chiamate API all'avvio del componente!
     getReservationsAsyncAwait()
-  }, [])
+  }, [props.updateReservations])
 
   console.log('SONO RENDER')
   // NON DOBBIAMO INSERIRE IN RENDER NESSUN METODO CHE CAMBI LO STATO
