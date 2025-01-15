@@ -10,6 +10,8 @@ import AdminSection from './components/AdminSection'
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
+import Menu from './components/Menu'
+import PastaDetails from './components/PastaDetails'
 
 function App() {
   const [updateReservations, setUpdateReservations] = useState(0)
@@ -35,6 +37,11 @@ function App() {
             <ReservationForm setUpdateReservations={setUpdateReservations} />
           }
         />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/details/:pastaId" element={<PastaDetails />} />
+        {/* es. /details/0 */}
+        {/* es. /details/50 */}
+        {/* es. /details/stefano */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* idealmente qui andrebbe un Footer, sempre fuori da Routes */}
