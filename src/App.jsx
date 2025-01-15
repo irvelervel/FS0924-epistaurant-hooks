@@ -8,17 +8,37 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import ReservationForm from './components/ReservationForm'
 import AdminSection from './components/AdminSection'
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import NotFound from './components/NotFound'
 
 function App() {
   const [updateReservations, setUpdateReservations] = useState(0)
 
   return (
-    <>
+    <BrowserRouter>
       <RestaurantNavbar />
-      <AdminSection updateReservations={updateReservations} />
-      <ReservationForm setUpdateReservations={setUpdateReservations} />
-      <HomeContent />
-    </>
+      {/* Routes è un componente che delimita le parti DINAMICHE da 
+      montare/smontare a seconda dell'URL in cui ci troviamo */}
+      {/* di conseguenza, NON inserisco la RestaurantNavbar nel mio
+      componente Routes */}
+
+      <Routes>
+        {/* dentro Routes ci possono andare SOLAMENTE dei <Route> */}
+        <Route path="/" element={<HomeContent />} />
+        <Route
+          path="/admin"
+          element={<AdminSection updateReservations={updateReservations} />}
+        />
+        <Route
+          path="/prenota"
+          element={
+            <ReservationForm setUpdateReservations={setUpdateReservations} />
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {/* idealmente qui andrebbe un Footer, sempre fuori da Routes */}
+    </BrowserRouter>
   )
 }
 

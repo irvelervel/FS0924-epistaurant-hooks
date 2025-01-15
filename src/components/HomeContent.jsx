@@ -18,7 +18,7 @@ const HomeContent = function () {
 
   return (
     <Container>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center mt-3">
         {/* colonna con classi settate "a mano" */}
         {/* <Col className="col-12 col-md-6 col-lg-4"> */}
         <Col xs={12} md={6}>
